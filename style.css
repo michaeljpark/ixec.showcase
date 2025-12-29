@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Flex', sans-serif; /* User Override */
+    background-color: #f5f5f5; /* User Override: Light Gray */
+    color: #333333; /* User Override: Dark Text */
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Header */
+header {
+    padding: 80px 120px 60px;
+    text-align: left;
+}
+
+.main-logo {
+    width: auto;
+    height: 80px; /* Adjust height as needed to match previous text size roughly */
+    margin-bottom: 40px;
+    display: block;
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.info-left {
+    text-align: left;
+}
+
+.info-right {
+    text-align: right;
+}
+
+.header-info p {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #666666; /* User Override: Darker gray for visibility */
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Showcase Layout */
+.showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding: 0 120px 80px;
+}
+
+.showcase-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.showcase-item {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.image-container {
+    width: 100%;
+    /* aspect-ratio: 16 / 9; Removed fixed aspect ratio to fit images naturally */
+    background: transparent; /* User Override: Transparent to match body bg */
+    overflow: hidden;
+    border-radius: 8px; /* Added polish */
+}
+
+.showcase-image {
+    width: 100%;
+    height: auto; /* Changed from 100% to auto to maintain aspect ratio */
+    object-fit: cover;
+    display: block;
+}
+
+.sub-heading {
+    font-family: 'Syncopate', sans-serif; /* User Override */
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333333; /* User Override */
+    letter-spacing: -2px; /* Slightly less tight for subtitles */
+    text-transform: uppercase;
+}
+
+.ixec-title {
+    font-family: 'Bruno Ace', sans-serif;
+    letter-spacing: 0;
+}
+
+.body {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #666666; /* User Override */
+    line-height: 1.8;
+    max-width: 800px;
+}
+
+/* Scroll-based slideshow for screenshots 6-12 */
+.scroll-slideshow {
+    height: 700vh;
+    position: relative;
+}
+
+.scroll-slideshow-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 120px;
+}
+
+.scroll-slideshow-container {
+    width: 100%;
+    max-width: 1600px;
+    /* aspect-ratio: 16 / 9; */
+    position: relative;
+    height: 80vh; /* Ensure container has height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.scroll-slide.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.showcase-continued {
+    padding-top: 80px;
+}
+
+/* Footer */
+footer {
+    padding: 60px 120px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.95rem;
+    color: #666666; /* User Override */
+    font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 60px 20px;
+    }
+
+    .main-logo {
+        height: 50px; /* Smaller logo on mobile */
+        margin-bottom: 30px;
+    }
+
+    .header-info {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .info-right {
+        text-align: left;
+    }
+
+    .header-info p {
+        font-size: 1rem;
+    }
+
+    .showcase {
+        gap: 60px;
+        padding: 0 20px 20px;
+    }
+
+    .showcase-row {
+        grid-template-columns: 1fr;
+    }
+
+    .showcase-item {
+        gap: 20px;
+    }
+
+    .sub-heading {
+        font-size: 1.5rem;
+    }
+
+    .body {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 40px 20px;
+    }
+
+    .scroll-slideshow-sticky {
+        padding: 0 20px;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fade-in from bottom animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.showcase-item,
+.showcase-row {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.showcase-item:nth-child(1) { animation-delay: 0.1s; }
+.showcase-item:nth-child(2) { animation-delay: 0.2s; }
+.showcase-item:nth-child(3) { animation-delay: 0.3s; }
+.showcase-item:nth-child(4) { animation-delay: 0.4s; }
+.showcase-item:nth-child(5) { animation-delay: 0.5s; }
+.showcase-item:nth-child(6) { animation-delay: 0.6s; }
+.showcase-item:nth-child(7) { animation-delay: 0.7s; }
+.showcase-item:nth-child(8) { animation-delay: 0.8s; }
+
+.image-container {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.showcase-item:nth-child(1) .image-container { animation-delay: 0.15s; }
+.showcase-item:nth-child(2) .image-container { animation-delay: 0.25s; }
+.showcase-item:nth-child(3) .image-container { animation-delay: 0.35s; }
+.showcase-item:nth-child(4) .image-container { animation-delay: 0.45s; }
+.showcase-item:nth-child(5) .image-container { animation-delay: 0.55s; }
+.showcase-item:nth-child(6) .image-container { animation-delay: 0.65s; }
+.showcase-item:nth-child(7) .image-container { animation-delay: 0.75s; }
+.showcase-item:nth-child(8) .image-container { animation-delay: 0.85s; }
+
+.sub-heading,
+.body {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.showcase-item:nth-child(1) .sub-heading { animation-delay: 0.25s; }
+.showcase-item:nth-child(1) .body { animation-delay: 0.35s; }
+.showcase-item:nth-child(2) .sub-heading { animation-delay: 0.35s; }
+.showcase-item:nth-child(2) .body { animation-delay: 0.45s; }
+.showcase-item:nth-child(3) .sub-heading { animation-delay: 0.45s; }
+.showcase-item:nth-child(3) .body { animation-delay: 0.55s; }
+.showcase-item:nth-child(4) .sub-heading { animation-delay: 0.55s; }
+.showcase-item:nth-child(4) .body { animation-delay: 0.65s; }
+.showcase-item:nth-child(5) .sub-heading { animation-delay: 0.65s; }
+.showcase-item:nth-child(5) .body { animation-delay: 0.75s; }
+.showcase-item:nth-child(6) .sub-heading { animation-delay: 0.75s; }
+.showcase-item:nth-child(6) .body { animation-delay: 0.85s; }
+.showcase-item:nth-child(7) .sub-heading { animation-delay: 0.85s; }
+.showcase-item:nth-child(7) .body { animation-delay: 0.95s; }
+.showcase-item:nth-child(8) .sub-heading { animation-delay: 0.95s; }
+.showcase-item:nth-child(8) .body { animation-delay: 1.05s; }
+/* Iframe Section */
+.iframe-container {
+    width: 100%;
+    /* padding removed to match showcase-item layout */
+}
+
+.iframe-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Changed to match typical image ratio */
+    border: none;
+    border-radius: 40px; /* User requested 40px */
+    overflow: hidden;
+    position: relative;
+}
+
+.iframe-container iframe {
+    width: 133.33%;
+    height: 133.33%;
+    transform: scale(0.75);
+    transform-origin: 0 0;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .iframe-container {
+        padding: 0; /* Remove padding to align with other images */
+    }
+
+    .iframe-wrapper {
+        aspect-ratio: 1 / 2;
+    }
+}
+
+
