@@ -324,3 +324,8 @@ html {
 }
 
 
+
+.showcase-item.no-animation {
+    animation: none !important;
+    opacity: 1 !important;
+}
