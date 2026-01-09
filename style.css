@@ -299,7 +299,7 @@ html {
 .iframe-wrapper {
     width: 100%;
     aspect-ratio: 16 / 9; /* Changed to match typical image ratio */
-    border: 1px solid #cccccc;
+    border: 2px solid #cccccc;
     border-radius: 40px; /* User requested 40px */
     overflow: hidden;
     position: relative;
