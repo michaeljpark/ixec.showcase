@@ -329,3 +329,58 @@ html {
     animation: none !important;
     opacity: 1 !important;
 }
+
+/* Side Navigation */
+#side-nav {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 120px; /* Matches the content padding-left */
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    justify-content: center; /* Centers the list horizontally in the 120px area */
+}
+
+#side-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Space between items */
+    width: fit-content; /* Allow list to size to content */
+    align-items: flex-start; /* Left align the text items */
+}
+
+#side-nav li {
+    width: 100%;
+}
+
+#side-nav a {
+    text-decoration: none;
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 0.7rem; /* Small text */
+    font-weight: 500;
+    color: #cccccc; /* Inactive Gray */
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    text-align: left;
+}
+
+#side-nav a.active {
+    color: #2962ff; /* Active Blue */
+    font-weight: 700;
+}
+
+#side-nav a:hover {
+    color: #999999;
+}
+
+@media (max-width: 1300px) {
+    #side-nav {
+        display: none;
+    }
+}

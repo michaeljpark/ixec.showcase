@@ -60,7 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add parallax effect on scroll (subtle)
+    // Parallax effect removed to prevent layout overlap issues
+    /*
     let ticking = false;
     window.addEventListener('scroll', function() {
         if (!ticking) {
@@ -79,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ticking = true;
         }
     });
+    */
 
     // Console log for debugging
     console.log('Design showcase loaded successfully');
@@ -141,4 +143,41 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initial update
         updateSlide();
     }
+
+    // Side Navigation Scroll Spy
+    const navLinks = document.querySelectorAll('#side-nav a');
+    const sections = Array.from(navLinks).map(link => {
+        const id = link.getAttribute('href').substring(1);
+        return document.getElementById(id);
+    }).filter(section => section !== null);
+
+    function updateNav() {
+        // Default to no selection (before first section)
+        let activeId = null;
+        
+        // Check sections position
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            // If section top is within upper half of viewport or above it
+            // Adjust threshold as needed, currently 40% down the screen
+            if (rect.top <= window.innerHeight * 0.4) {
+                 activeId = section.getAttribute('id');
+            }
+        });
+        
+        // Loop through links and set active class
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (activeId && link.getAttribute('href') === '#' + activeId) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', function() {
+        window.requestAnimationFrame(updateNav);
+    });
+    
+    // Initial call
+    updateNav();
 });
