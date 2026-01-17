@@ -305,6 +305,36 @@ html {
     position: relative;
 }
 
+/* Media Flex Layout */
+.media-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    align-items: flex-start; /* Align top, heights should match via flex ratios */
+}
+
+.video-container {
+    flex: 27; /* Ratio 27:64 ensures equal heights for 3/4 and 16/9 items */
+    aspect-ratio: 3 / 4;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* When iframe is in the row, let it shrink */
+.media-row .iframe-wrapper {
+    flex: 64; /* Ratio 27:64 ensures equal heights for 3/4 and 16/9 items */
+    width: auto;
+    height: auto; /* Let aspect ratio define it */
+}
+
 .iframe-container iframe {
     width: 133.33%;
     height: 133.33%;
@@ -320,6 +350,16 @@ html {
 
     .iframe-wrapper {
         aspect-ratio: 1 / 2;
+    }
+
+    .media-row {
+        flex-direction: column;
+    }
+    
+    .video-container {
+        width: 100%;
+        min-width: 0;
+        flex: none;
     }
 }
 
